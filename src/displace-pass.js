@@ -18,6 +18,7 @@ export default class DisplacePass extends BasePass {
 
         super({
             fragmentShader: require('./shaders/displace-pass.frag'),
+            vertexShader: require('./shaders/displace-pass.vert'),
             uniforms: baseUniforms
         })
 
