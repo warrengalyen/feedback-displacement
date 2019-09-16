@@ -1,0 +1,9 @@
+node_modules
+.idea
+ftp.config.js
+
+public/index.html
+public/css
+public/js/index.js
+
+doc
