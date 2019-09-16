@@ -50,7 +50,8 @@ module.exports = {
         new webpack.ProvidePlugin({
             Vue: 'vue',
             $: 'jquery',
-            THREE: 'three'
+            THREE: 'three',
+            _: 'lodash',
         })
     ]
 }
