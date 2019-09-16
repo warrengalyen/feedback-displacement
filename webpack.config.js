@@ -25,7 +25,7 @@ module.exports = {
             },
             {
                 test: /\.jade$/,
-                loader: 'jade-loader'
+                loader: 'pug-loader'
             },
             {
                 test: /\.styl$/,
