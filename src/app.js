@@ -3,6 +3,7 @@ import ImageLoader from './image-loader'
 
 import Effects from './effects'
 
+import './commands'
 import './directives'
 import './ctrl'
 
@@ -67,5 +68,19 @@ export default class App extends Vue {
 
         this.easel.changeEffect(effect.fragmentShader, uniforms)
     }
+
+    // events
+    onClickLoad() {
+        window.Commands.execute('load-source')
+    }
+
+    onClickSave() {
+        window.Commands.execute('save-canvas')
+    }
+
+    onClickReset() {
+        window.Commands.execute('reset-canvas')
+    }
+
 
 }
