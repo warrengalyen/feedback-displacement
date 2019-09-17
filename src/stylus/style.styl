@@ -47,6 +47,31 @@ body
   background: #0a0a0a
   line-height 1.2
 
+//--------------------------------------------------
+// drag-over
+
+.drag-over
+  position absolute
+  display flex
+  flex-direction column
+  justify-content center
+  top 0
+  left 0
+  width 100%
+  height 100%
+  z-index 100
+  background-color rgba(16, 16, 16, .6)
+  transition all .2s ease
+  opacity 0
+  pointer-events: none
+
+  body.drag &
+    opacity 1
+
+.drag-over__text
+  color #ddd
+  text-align center
+  font-size 1.8rem
 
 //--------------------------------------------------
 // toolbar
@@ -56,7 +81,7 @@ $toolbar-width = 240px
 .toolbar
   position absolute
   display flex
-flex-direction column
+  flex-direction column
   top 0
   left 0
   width $toolbar-width
@@ -74,7 +99,7 @@ flex-direction column
   margin-bottom 1.5rem
 
 .toolbar__control
-flex-grow 2
+  flex-grow 2
 
 @import './ctrl.styl'
 
@@ -109,6 +134,7 @@ $canvas-margin = 15px
   z-index 100
   mix-blend-mode difference
   pointer-events none
+
 
   &.show
     visibility visible
