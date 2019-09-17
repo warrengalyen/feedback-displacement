@@ -10,7 +10,6 @@ const runSequence = require('run-sequence')
 const browserSync = BrowserSync.create()
 
 let developmentMode = true
-let isDeployRoot = process.argv[3] == '-r'
 
 process.env.NODE_ENV = 'dev'
 
@@ -56,7 +55,7 @@ gulp.task('pug', () => {
 
 //==================================================
 gulp.task('stylus', () => {
-    return gulp.src('./src/stylus/*.styl')
+    return gulp.src('./src/stylus/style.styl')
         .pipe($.plumber())
         .pipe($.stylus({use: [require('nib')()]}))
         .pipe($.autoprefixer())
@@ -65,7 +64,6 @@ gulp.task('stylus', () => {
         .pipe(gulp.dest('public/css'))
         .pipe(browserSync.stream())
 })
-
 
 //==================================================
 gulp.task('browser-sync', () => {
