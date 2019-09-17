@@ -23,6 +23,7 @@ export default class DisplacePass extends BasePass {
         })
 
         this.baseUniforms = baseUniforms
+        this.aspect = 1
 
         this.enableDisplace = false
 
@@ -41,6 +42,7 @@ export default class DisplacePass extends BasePass {
     changeProgram(code, uniforms) {
 
         this.uniforms = _.merge(this.baseUniforms, uniforms)
+        this.uniforms.aspect.value = this.aspect
 
         let mat = new THREE.RawShaderMaterial({
             uniforms: this.uniforms,
@@ -75,8 +77,10 @@ export default class DisplacePass extends BasePass {
     }
 
     setSize(w, h) {
+        this.aspect = h / w
         this.prevRenderTarget.setSize(w, h)
         this.currentRenderTarget.setSize(w, h)
         this.uniforms.aspect.value = h / w
+        this.uniforms.aspect.value = this.aspect
     }
 }
