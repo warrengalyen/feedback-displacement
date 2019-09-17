@@ -16,6 +16,7 @@ _.forEach(Effects, (effects, name) => {
 			saveAndExit()
 		}
 	})
+
 })
 
 function saveAndExit() {

@@ -81,7 +81,7 @@ export default class App extends Vue {
 
     // events
     onClickLoad() {
-        window.Commands.execute('load-source')
+        window.Commands.loadImage('load-source')
     }
 
     onClickSave() {
