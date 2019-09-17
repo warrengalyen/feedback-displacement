@@ -44,6 +44,7 @@ gulp.task('webpack', () => {
 gulp.task('compile-effects', () => {
     return gul.src('')
         .pipe($.shell(['node ./output-effects.js']))
+        .pipe(browserSync.reload())
 })
 
 //==================================================
