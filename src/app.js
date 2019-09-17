@@ -42,6 +42,7 @@ export default class App extends Vue {
             localStorage: {
                 currentEffect: {type: String, default: 'polar-perlin'},
                 currentParams: {type: Object, default: {}}
+            }
         })
 
         this.easel = new Easel()
@@ -100,6 +101,5 @@ export default class App extends Vue {
     onClickReset() {
         window.Commands.execute('reset-canvas')
     }
-
 
 }
