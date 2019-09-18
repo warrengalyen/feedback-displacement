@@ -26,6 +26,8 @@ class Commands extends EventEmitter {
 			this.emit('reload-effects')
 			return false
 		})
+
+
 	}
 
 	_initDragDrop() {

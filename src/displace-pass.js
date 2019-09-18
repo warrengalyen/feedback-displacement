@@ -78,11 +78,10 @@ export default class DisplacePass extends BasePass {
         console.log('disp reset')
     }
 
-    setSize(w, h) {
-        this.aspect = h / w
-        this.prevRenderTarget.setSize(w, h)
-        this.currentRenderTarget.setSize(w, h)
-        this.uniforms.aspect.value = h / w
-        this.uniforms.aspect.value = this.aspect
-    }
+	setSize(w, h) {
+		this.aspect = h / w
+		this.prevRenderTarget.setSize(w, h)
+		this.currentRenderTarget.setSize(w, h)
+		this.uniforms.aspect.value = this.aspect
+	}
 }
