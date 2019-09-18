@@ -30,8 +30,8 @@ Vue.component('ctrl-group', {
 					<ctrl-dropdown @change='onChange' :label='p.label' :options='p.options'></ctrl-dropdown>
 				</template>
 
-				<template v-if='p.type == "range"'>
-					<ctrl-range @change='onChange' :label='p.label' :value.sync='p.value' :min='p.min' :max='p.max'></ctrl-range>
+				<template v-if='p.type == "slider"'>
+					<ctrl-slider @change='onChange' :label='p.label' :value.sync='p.value' :min='p.min' :max='p.max'></ctrl-slider>
 				</template>
 
 				<template v-if='p.type == "offset"'>
@@ -42,8 +42,8 @@ Vue.component('ctrl-group', {
 					<ctrl-angle @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-angle>
 				</template>
 
-				<template v-if='p.type == "range2d"'>
-					<ctrl-range2d @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-range2d>
+				<template v-if='p.type == "slider2d"'>
+					<ctrl-slider2d @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-slider2d>
 				</template>
 
 				<template v-if='p.type == "offset2d"'>
@@ -51,7 +51,7 @@ Vue.component('ctrl-group', {
 				</template>
 
 				<template v-if='p.type == "random"'>
-					<ctrl-random @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-random>
+				<ctrl-random @change='onChange' :label='p.label' :value.sync='p.value' :min='p.min' :max='p.max'></ctrl-random>
 				</template>
 
 			</template>
@@ -89,9 +89,9 @@ Vue.component('ctrl-dropdown', {
 })
 
 //------------------------------------------------------------------
-Vue.component('ctrl-range', {
+Vue.component('ctrl-slider', {
     template: `
-		<div class='ctrl__component ctrl__range'>
+		<div class='ctrl__component ctrl__slider'>
 			<label>{{label}}</label>
 			<div class='container' @mousedown='onMousedown'>
 				<div class='fill' :style='{transform: fillTransform}'></div>
@@ -99,7 +99,7 @@ Vue.component('ctrl-range', {
 			</div>
 		</div>`,
     props: {
-        label: {type: String, default: 'RANGE'},
+        label: {type: String, default: 'slider'},
         value: {type: Number, default: 0},
         min: {type: Number, default: 0},
         max: {type: Number, default: 1},
@@ -210,9 +210,9 @@ Vue.component('ctrl-angle', {
 })
 
 //------------------------------------------------------------------
-Vue.component('ctrl-range2d', {
+Vue.component('ctrl-slider2d', {
     template: `
-		<div class='ctrl__component ctrl__range2d'>
+		<div class='ctrl__component ctrl__slider2d'>
 			<label>{{label}}</label>
 			<div class='value'>{{value.x | precision}}, {{value.y | precision}}</div>
 			<div class='container' @mousedown='onMousedown($event)'>
@@ -225,7 +225,7 @@ Vue.component('ctrl-range2d', {
 		</div>
 		`,
     props: {
-        label: {type: String, default: 'RANGE 2D'},
+        label: {type: String, default: 'slider 2D'},
         value: {type: Object, default: function() {return {x: .5, y: .5}}}
     },
     computed: {
@@ -320,16 +320,13 @@ Vue.component('ctrl-random', {
 		</div>`,
     props: {
         label: {type: String, default: 'RANDOM'},
-        value: {type: Number, default: 0}
-    },
-    computed: {
-        fillTransform: function() {
-            return `scaleX(${this.value / (this.max - this.min)})`
-        }
+        value: {type: Number, default: 0},
+        min: {type: Number, default: 0},
+        max: {type: Number, default: 1}
     },
     methods: {
         generate() {
-            this.value = Math.random()
+            this.value = lerp(this.min, this.max, Math.random())
             this.$emit('change')
         }
     }
