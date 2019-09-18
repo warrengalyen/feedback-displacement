@@ -25,27 +25,35 @@ Vue.component('ctrl-group', {
     template: `
 		<div class='ctrl__group'>
 			<template v-for='p in params'>
+
 				<template v-if='p.type == "dropdown"'>
 					<ctrl-dropdown @change='onChange' :label='p.label' :options='p.options'></ctrl-dropdown>
 				</template>
+
 				<template v-if='p.type == "range"'>
 					<ctrl-range @change='onChange' :label='p.label' :value.sync='p.value' :min='p.min' :max='p.max'></ctrl-range>
 				</template>
+
 				<template v-if='p.type == "offset"'>
 					<ctrl-offset @change='onChange' :label='p.label' :value.sync='p.value' :width='p.width'></ctrl-offset>
 				</template>
+
 				<template v-if='p.type == "angle"'>
 					<ctrl-angle @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-angle>
 				</template>
+
 				<template v-if='p.type == "range2d"'>
 					<ctrl-range2d @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-range2d>
 				</template>
+
 				<template v-if='p.type == "offset2d"'>
 					<ctrl-offset2d @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-offset2d>
 				</template>
+
 				<template v-if='p.type == "random"'>
 					<ctrl-random @change='onChange' :label='p.label' :value.sync='p.value'></ctrl-random>
 				</template>
+
 			</template>
 		</div>
 		`,
