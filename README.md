@@ -1,5 +1,7 @@
 # Feedback Displacement
 
+![Feedback Displacement](screenshot.png)
+
 ## Requirements
 
  - node.js
