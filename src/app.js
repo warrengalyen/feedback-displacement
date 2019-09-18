@@ -5,10 +5,8 @@ Vue.use(VueAsyncData)
 Vue.use(VueLocalStorage)
 
 import Easel from './easel'
-import ImageLoader from './image-loader'
 
 import './commands'
-import './directives'
 import './ctrl'
 
 export default class App extends Vue {
