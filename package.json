@@ -63,7 +63,7 @@
     "run-sequence": "^1.2.1",
     "stats.js": "^0.16.0",
     "stylus-media-queries": "^1.0.0",
-    "three": "^0.78.0",
+    "three": "^0.125.0",
     "vinyl-ftp": "^0.6.1",
     "vue": "^1.0.28",
     "vue-async-data": "^1.0.2",
